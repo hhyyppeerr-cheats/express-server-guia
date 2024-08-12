@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <h1>Iniciar sesión</h1>
+  <form>
+    <input name="name" placeholder="Nombre">
+    <input name="password" placeholder="Contraseña">
+    <input type="submit" value="Iniciar sesión">
+  </form>
+  <div id="response"></div>
+  <script>
+    // Elementos DOM
+    const nameInput = document.querySelector('input[name="name"]');
+    const passwordInput = document.querySelector('input[name="password"]');
+    const responseDiv = document.querySelector('#response');
+    const form = document.querySelector('form');
+    
+    // Enviar datos del formulario
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = nameInput.value;
+      const password = passwordInput.value;
+      const obj = { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify({ name, password })
+      };
+      const response = await fetch('/json-login', obj);
+      
+      // Gestionar la respuesta
+      const data = await response.json();
+      if (data.error) {
+        responseDiv.innerHTML = data.error;
+      } else {
+        responseDiv.innerHTML = `Bienvenido, ${data.name}`;
+      }
+    });
+  </script>
+</body>
+</html>

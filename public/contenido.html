@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Links</h2>
+  <nav>
+    <ul>
+      <li>
+        <a href="/html-form">Formulario html</a>, el formulario clásico usado en la web, no nos permite manejar la respuesta del servidor.
+      </li>
+      <li>
+        <a href="/json-form">Formulario json</a>, utilizando fetch y javascript, nos permite manejar la respuesta del servidor.
+      </li>
+      <li>
+        <a href="/http-login">HTTP Auth</a>, formulario de autenticación con HTTP.
+      </li>
+      <li>
+        <a href="/json-login">JSON Auth</a>, formulario de autenticación con JSON y fetch.
+      </li>
+      <li>
+        <a href="/ping">Ping</a>, ejecutar comandos de terminal desde el navegador.
+      </li>
+      <li>
+        <a href="/figlet">Figlet</a>, convertir texto a arte ascii.
+      </li>
+    </ul>
+  </nav>
+  <hr>
+  <h2>API</h2>
+  <p>Ejemplo de API RESTful emulando una base de datos de usuarios.</p>
+  
+  <h3>GET /apiv1/users</h3>
+  <p>Obtiene la lista completa de usuarios</p>
+  <pre>
+<code>localhost:port/apiv1/users</code>
+  </pre>
+
+  <h3>GET /apiv1/users/:id</h3>
+  <p>Obtiene el usuario según su id</p>
+  <pre>
+<code>localhost:port/apiv1/users/1</code>
+  </pre>
+  
+  <h3>POST /apiv1/users</h3>
+  <p>Crea un nuevo usuario</p>
+  <pre>
+<code>localhost:port/apiv1/users?name=nombre&password=contraseña</code>
+  </pre>
+  
+  <h3>PUT /apiv1/users/:id</h3>
+  <p>Actualiza el usuario según su id</p>
+  <pre>
+<code>localhost:port/apiv1/users/1?name=nombre&password=contraseña</code>
+  </pre>
+  
+  <h3>DELETE /apiv1/users/:id</h3>
+  <p>Elimina el usuario según su id</p>
+  <pre>
+<code>localhost:port/apiv1/users/1</code>
+  </pre>
+
+  <hr>
+
+</body>
+</html>

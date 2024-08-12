@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+    font-family: monospace;
+    margin: 0;
+}
+hr{
+    display: block;
+    content: "";
+    margin-top: 1rem;
+}
+
+h2{
+    margin-top: 1rem;
+}
+body{
+    margin: 1rem;
+}
+
+pre code {
+    background: black;
+    color: white;
+    padding: 0.5em;
+}
+
+pre{
+    margin: 1rem 0;
+}

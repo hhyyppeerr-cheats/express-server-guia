@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <h1>Formulario FormData</h1>
+  <form>
+    <input name="name" placeholder="Nombre">
+    <input name="password" placeholder="Contraseña">
+    <input type="submit" value="Iniciar sesión">
+  </form>
+  <div id="response"></div>
+  <script>
+    // Elementos DOM
+    const form = document.querySelector('form');
+    const responseDiv = document.querySelector('#response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const obj = { 
+        method: 'POST', 
+        body: formData
+      };
+      const response = await fetch('/formdata-form', obj);
+      
+      // Gestionar la respuesta
+      const data = await response.json();
+      if (data.error) {
+        responseDiv.innerHTML = data.error;
+      } else {
+        responseDiv.innerHTML = `Datos enviados correctamente: ${JSON.stringify(data)}`;
+      }
+    });
+  </script>
+</body>
+</html>

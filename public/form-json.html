@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Formulario JSON</h1>
+  <p>Ejemplo de formulario utilizando javascript y fetch:</p>
+  <form>
+    <input type="text" placeholder="Ingresa un nombre">
+    <input type="text" placeholder="Ingresa un contraseña">
+    <button type="submit">Enviar</button>
+  </form>
+
+  <p id="response"></p>
+
+  <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      document.getElementById('response').innerText = "Espera un momento...";
+      const name = form.querySelector('input').value;
+      const password = form.querySelector('input').value;
+      const response = await fetch('/json-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, password }),
+      });
+      const data = await response.json();
+      const { nameResp=name, passwordResp=password } = data;
+      document.getElementById('response').innerText = "";
+      document.getElementById('response').innerText = `Llamada a /json-form exitosa`;
+      document.getElementById('response').innerText += `\nUser: ${nameResp}`;
+      document.getElementById('response').innerText += `\nContraseña: ${passwordResp}`;
+    });
+  </script>
+</body>
+</html>

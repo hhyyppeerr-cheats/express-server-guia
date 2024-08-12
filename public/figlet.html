@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figlet API</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Figlet</h1>
+
+  <form>
+    <select name="fuente" id="fuente">
+      <option value="Standard">Standard</option>
+      <option value="Sub-Zero">Sub-Zero</option>
+      <option value="Ghost">Ghost</option>
+    </select>
+    <input type="text" placeholder="Ingresa un texto">
+    <button type="submit">Enviar</button>
+  </form>
+
+  <pre>
+
+  </pre>
+
+  <script>
+    const form = document.querySelector('form');
+    const fontSelector = form.querySelector('select')
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const text = form.querySelector('input').value;
+      const font = fontSelector.value;
+      const response = await fetch('/figlet', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text, font }),
+      });
+      const data = await response.json();
+      document.querySelector('pre').innerText = data.text;
+    });
+  </script>
+</body>
+</html>
